@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 
 const books = await getCollection('books')
 
+export const prerender = true
 ---
 
 <Layout title="Dev Books, libros para programadores">
@@ -17,7 +18,7 @@ const books = await getCollection('books')
       <div class="grid gap-6 md:grid-cols-2">
         {
 					books.map(book => {
-						const { slug, data } = book
+						const { data, slug } = book
 						const { title, author, img, readtime, description, buy } = data
 
 						return (
